@@ -16,7 +16,14 @@ function SubscribeForm() {
         Sign Up for our newsletter and get notified when we publish new articles
         for free!
       </p>
-      <input className="input" type="email" onChange={handleChange} value={email} />
+      <input
+        className="input"
+        type="email"
+        onChange={handleChange}
+        value={email}
+        placeholder="example@domain.com"
+        required
+      />
       <button className="btn" type="button" onClick={handleSubmit}>
         Subscribe
       </button>
