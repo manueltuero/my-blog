@@ -1,1 +1,4 @@
 /* Here we can put the global styles of our app */
+* {
+  font-family: 'Montserrat';
+}

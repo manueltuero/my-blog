@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import addToMailchimp from 'gatsby-plugin-mailchimp';
-import styles from './styles.css';
+import './styles.css';
 
 function SubscribeForm() {
   const [email, setEmail] = useState('');
@@ -10,10 +10,15 @@ function SubscribeForm() {
   const handleChange = event => setEmail(event.target.value);
 
   return (
-    <form className={styles.form}>
-      <input type="email" onChange={handleChange} value={email} />
-      <button type="button" onClick={handleSubmit}>
-        Send
+    <form className="form">
+      <span className="title">Subscribe for latest updates</span>
+      <p className="text">
+        Sign Up for our newsletter and get notified when we publish new articles
+        for free!
+      </p>
+      <input className="input" type="email" onChange={handleChange} value={email} />
+      <button className="btn" type="button" onClick={handleSubmit}>
+        Subscribe
       </button>
     </form>
   );

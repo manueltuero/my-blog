@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby';
 
 import Bio from '../components/bio';
 import Layout from '../components/layout';
+import SubscribeForm from '../components/SubscribeForm';
 import { rhythm } from '../utils/typography';
 
 function BlogIndex({ data, location }) {
@@ -27,12 +28,13 @@ function BlogIndex({ data, location }) {
             <small>{node.frontmatter.date}</small>
             <p
               dangerouslySetInnerHTML={{
-                __html: node.frontmatter.description || node.excerpt,
+                __html: node.excerpt,
               }}
             />
           </div>
         );
       })}
+      <SubscribeForm />
     </Layout>
   );
 }
@@ -56,7 +58,6 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
-            description
           }
         }
       }
