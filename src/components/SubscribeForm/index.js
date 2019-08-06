@@ -49,7 +49,7 @@ function SubscribeForm() {
       </div>
       <button
         className="subscribe-form__button"
-        type="button"
+        type="submit"
         onClick={handleSubmit}
       >
         Subscribe
