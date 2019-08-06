@@ -72,6 +72,13 @@ module.exports = {
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
-    }
+    },
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint:
+          'https://wolox.us3.list-manage.com/subscribe/post?u=dc99a4a14838b86f3af934503&amp;id=7f9b896200',
+      },
+    },
   ],
-}
+};

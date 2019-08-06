@@ -4,27 +4,54 @@ import './styles.css';
 
 function SubscribeForm() {
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = async () => await addToMailchimp(email);
+  const handleSubmit = async event => {
+    event.preventDefault();
+    const { result, msg } = await addToMailchimp(email);
+    result === 'success' && setEmail('');
+    // Delete the HTML returned in the response in case of the error message
+    setMessage(msg.split('<')[0]);
+    setStatus(result);
+  };
 
   const handleChange = event => setEmail(event.target.value);
 
   return (
-    <form className="form">
-      <span className="title">Subscribe for latest updates</span>
-      <p className="text">
+    <form className="subscribe-form">
+      <span className="subscribe-form__title">
+        Subscribe for latest updates
+      </span>
+      <p className="subscribe-form__text">
         Sign Up for our newsletter and get notified when we publish new articles
         for free!
       </p>
-      <input
-        className="input"
-        type="email"
-        onChange={handleChange}
-        value={email}
-        placeholder="example@domain.com"
-        required
-      />
-      <button className="btn" type="button" onClick={handleSubmit}>
+      <div className="subscribe-form__content">
+        <input
+          className="subscribe-form__input"
+          type="email"
+          onChange={handleChange}
+          value={email}
+          placeholder="example@domain.com"
+          required
+        />
+        <span
+          status={status}
+          className={
+            status === 'success'
+              ? 'subscribe-form__message_success'
+              : 'subscribe-form__message_failure'
+          }
+        >
+          {message}
+        </span>
+      </div>
+      <button
+        className="subscribe-form__button"
+        type="button"
+        onClick={handleSubmit}
+      >
         Subscribe
       </button>
     </form>
