@@ -11,7 +11,7 @@ function SubscribeForm() {
     event.preventDefault();
     const { result, msg } = await addToMailchimp(email);
     result === 'success' && setEmail('');
-    // Delete the HTML returned in the response in case of the error message
+    // Removes the HTML returned in some response messages in case of error
     setMessage(msg.split('<')[0]);
     setStatus(result);
   };
